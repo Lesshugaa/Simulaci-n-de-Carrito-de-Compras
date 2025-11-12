@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>🛒 Carrito de Compras – Actividad 15</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <h1>🛍️ Tiendita PWD</h1>
+    <nav class="user-nav">
+      <span id="welcome"></span>
+      <button id="btnLogin" class="btn">Iniciar sesión</button>
+      <button id="btnRegister" class="btn btn-secondary">Registrarse</button>
+      <button id="btnLogout" class="btn btn-danger" hidden>Salir</button>
+      <button id="btnCart" class="btn btn-accent">Carrito (<span id="cartCount">0</span>)</button>
+    </nav>
+  </header>
+
+  <main class="container">
+    <!-- Panel de autenticación -->
+    <section id="authPanel" class="card auth">
+      <h2>Acceso</h2>
+      <div class="tabs">
+        <button class="tab active" data-tab="loginForm">Iniciar sesión</button>
+        <button class="tab" data-tab="registerForm">Crear cuenta</button>
+      </div>
+
+      <form id="loginForm" class="form active">
+        <label>Email
+          <input type="email" id="loginEmail" placeholder="tu@correo.com" required />
+        </label>
+        <label>Contraseña
+          <input type="password" id="loginPassword" placeholder="••••••••" required />
+        </label>
+        <button type="submit" class="btn btn-primary">Entrar</button>
+      </form>
+
+      <form id="registerForm" class="form">
+        <label>Nombre
+          <input type="text" id="regName" placeholder="Tu nombre" required />
+        </label>
+        <label>Email
+          <input type="email" id="regEmail" placeholder="tu@correo.com" required />
+        </label>
+        <label>Contraseña
+          <input type="password" id="regPassword" placeholder="Mínimo 6 caracteres" minlength="6" required />
+        </label>
+        <button type="submit" class="btn btn-primary">Crear cuenta</button>
+      </form>
+    </section>
+
+    <!-- Catálogo -->
+    <section id="catalogPanel" class="card" hidden>
+      <div class="catalog-head">
+        <h2>Catálogo</h2>
+        <div class="filters">
+          <input type="search" id="q" placeholder="Buscar producto..." />
+          <select id="orderBy">
+            <option value="name-asc">Nombre (A→Z)</option>
+            <option value="price-asc">Precio (menor a mayor)</option>
+            <option value="price-desc">Precio (mayor a menor)</option>
+          </select>
+        </div>
+      </div>
+      <div id="productGrid" class="grid"></div>
+    </section>
+
+    <!-- Carrito -->
+    <section id="cartPanel" class="card" hidden>
+      <h2>Tu Carrito</h2>
+      <div id="cartEmpty" class="empty">Tu carrito está vacío. 🛍️</div>
+      <div id="cartTableWrapper" class="table-wrapper" hidden>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Producto</th>
+              <th>Precio</th>
+              <th>Cant.</th>
+              <th>Subtotal</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody id="cartBody"></tbody>
+        </table>
+        <div class="cart-actions">
+          <div class="coupon">
+            <label>Cupones: <code>DIS_10</code>, <code>DIS_15</code>, <code>DIS_25</code></label>
+            <input id="coupon" placeholder="Ingresá tu cupón" />
+            <button id="applyCoupon" class="btn">Aplicar</button>
+            <small id="couponMsg"></small>
+          </div>
+          <div class="totals">
+            <div>Subtotal: <strong id="subTotal">$0,00</strong></div>
+            <div>Descuento: <strong id="discount">$0,00</strong></div>
+            <div>Total: <strong id="grandTotal">$0,00</strong></div>
+            <button id="checkout" class="btn btn-primary">Finalizar compra</button>
+          </div>
+        </div>
+      </div>
+      <div id="ticket" class="ticket" hidden></div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <small>Actividad 15 – Simulación de Carrito · PWD 7° 2° B · 2025</small>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
